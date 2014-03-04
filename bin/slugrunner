@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'slugrunner'
+Slugrunner::CLI.run

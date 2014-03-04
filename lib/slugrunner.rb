@@ -1,5 +1,3 @@
-require "slugrunner/version"
-
-module Slugrunner
-    # Your code goes here...
-end
+require 'slugrunner/version'
+require 'slugrunner/runner'
+require 'slugrunner/cli'
