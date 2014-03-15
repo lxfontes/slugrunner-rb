@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'slugrunner'
+STDOUT.sync = true
+STDERR.sync = true
 Slugrunner::CLI.run
