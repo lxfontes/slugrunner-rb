@@ -55,7 +55,6 @@ module Slugrunner
       fail "Couldn't find command for process type #{@process_type}" unless proc_command
 
       command = prepare_env(proc_command)
-      puts(command)
       @child = fork { exec(command) }
       trap_signals
 
