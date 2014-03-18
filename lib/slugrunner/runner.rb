@@ -63,7 +63,7 @@ module Slugrunner
 
       start_ping if @ping
 
-      Process.wait
+      Process.waitpid(@child, 0)
 
       @alive = false
       notify(:stop) if @ping
@@ -109,8 +109,8 @@ module Slugrunner
 
     def kill_child
       if @child
-        logger("Killing process #{@child} with SIGTERM.")
-        Process.kill('TERM', @child)
+        logger("Killing process #{@child} with SIGKILL.")
+        Process.kill('KILL', @child)
       end
     end
 
@@ -170,7 +170,7 @@ module Slugrunner
 
     def prepare_env(cmd)
       blob = <<-eos
-      env - bash -c '
+      exec env - bash -c '
       cd #{@slug_dir}
       export HOME=#{@slug_dir}
       export APP_DIR=#{@slug_dir}
