@@ -77,7 +77,7 @@ module Slugrunner
       start_ts = Time.now
       stop_ts = start_ts.to_i + @bind_delay
       while Time.now.to_i < stop_ts
-        return true if is_port_open?(port)
+        return true if port_open?(port)
       end
 
       logger("Port hasn't been open after #{@bind_delay} seconds.")
@@ -130,18 +130,14 @@ module Slugrunner
       puts("[slugrunner] #{str}")
     end
 
-    def is_port_open?(port)
-      Timeout::timeout(1) do
-        begin
-          s = TCPSocket.new('localhost', port)
-          s.close
-          return true
-        rescue
-          return false
-        end
-      end
+    def port_open?(port)
+      # no need for timeout as we always connect to localhost
+      s = TCPSocket.new('localhost', port)
+      return true
     rescue
       return false
+    ensure
+      s.close if s
     end
 
     def fetch_slug
