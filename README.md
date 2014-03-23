@@ -1,29 +1,31 @@
-# Slugrunner::Rb
+## Running heroku-style slugs
 
-TODO: Write a gem description
+Facilitates running [slugfiles](https://devcenter.heroku.com/articles/slug-compiler).
 
-## Installation
+Provides:
+- Clean environment, isolation from machine's $PATH
+- Signal forwarding
+- Port binding validation
+- Hostname rewriting (new relic reporting)
+- Service Discovery integration (setup/start/update/stop notifications)
 
-Add this line to your application's Gemfile:
+### Options
 
-    gem 'slugrunner-rb'
+              --slug, -s <s>:   Slug file
+            --worker, -w <s>:   Worker type (default: web)
+          --instance, -i <i>:   Instance number (default: 1)
+      --delayed-bind, -d <i>:   Port bind allowance (default: 0)
+              --ping, -p <s>:   Notify state updates
+      --ping-interval, -n <i>:   Update interval in seconds (default: 30)
+              --env, -e <s+>:   Append to environment
+                  --bash, -b:   Run interactive shell
+                  --help, -h:   Show this message
 
-And then execute:
+## Sample usage
+### Local slug
 
-    $ bundle
+    slugrunner -s ./slug.tgz
 
-Or install it yourself as:
+### TODO
 
-    $ gem install slugrunner-rb
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( http://github.com/<my-github-username>/slugrunner-rb/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+- write a better readme
