@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["lxfontes"]
   spec.email         = ["lxfontes@gmail.com"]
   spec.summary       = %q{Running application slugs}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/lxfontes/slugrunner-rb"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
