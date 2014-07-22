@@ -142,7 +142,7 @@ module Slugrunner
 
     def fetch_slug
       if @slug =~ /^http/
-        `curl -s "#{@slug}" | tar -zxC #{@slug_dir}`
+        `curl -L -s "#{@slug}" | tar -zxC #{@slug_dir}`
       else
         `tar zx -C #{@slug_dir} -f #{@slug}`
       end
